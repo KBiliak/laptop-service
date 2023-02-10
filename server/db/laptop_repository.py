@@ -1,9 +1,9 @@
-
 def post_laptop(mysql, laptop):
     with mysql.connection.cursor() as cursor:
         sql = f"insert into laptop(name, year) value('{laptop['name']}', {laptop['year']})"
         cursor.execute(sql)
         mysql.connection.commit()
+
 
 def get_laptop(mysql):
     with mysql.connection.cursor() as cursor:
@@ -20,6 +20,7 @@ def get_laptop(mysql):
             result.append(laptop)
     return result
 
+
 def delete_all_laptops(mysql):
     with mysql.connection.cursor() as cursor:
         sql = f"delete from laptop"
@@ -27,11 +28,12 @@ def delete_all_laptops(mysql):
         mysql.connection.commit()
 
 
-def delete_id_lap(mysql,id):
+def delete_id_lap(mysql, id):
     with mysql.connection.cursor() as cursor:
         sql = f"delete from laptop where id = {id}"
         cursor.execute(sql)
         mysql.connection.commit()
+
 
 def update_lap(mysql, id, laptop):
     with mysql.connection.cursor() as cursor:

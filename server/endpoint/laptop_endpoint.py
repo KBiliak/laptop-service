@@ -1,5 +1,6 @@
-from server import app
 from flask import request
+
+from server import app
 from server.service import laptop_service
 
 
@@ -17,16 +18,19 @@ def get_all_laptops():
     laptop = laptop_service.show_laptop()
     return laptop
 
+
 @app.delete("/laptops")
 def delete_laptops():
     laptop_service.delete_all_laptops()
     return {"status": "The table is empty"}
+
 
 @app.delete("/laptop/<int:id>")
 def delete_lap_id(id):
     print("delete laptop by id", id)
     laptop_service.delete_lap(id)
     return {}
+
 
 @app.put("/laptop/<int:id>")
 def update_laptop(id):
